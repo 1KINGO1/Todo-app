@@ -1,0 +1,20 @@
+.wrapper{
+  position: fixed;
+  display: flex;
+  left: 2px;
+  bottom: 2px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 7px;
+}
+
+.taskCount{
+  color: white;
+  font-weight: 500;
+}
+
+.usedMemory{
+  color: white;
+  font-weight: 500;
+  padding: 0 0 0 10px;
+}

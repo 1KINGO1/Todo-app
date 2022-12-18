@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import styles from './App.module.scss';
+import TopBar from './components/TopBar/TopBar';
+import Tasks from './components/Tasks/Tasks';
+import TaskI from './shared/types/task';
+import LocalStorage from './service/LocalStorage';
+import CountTable from './components/CountTable/CountTable';
 
 function App() {
+
+  const [fetchedTasks, setFetchedTasks] = useState<TaskI[]>(LocalStorage.fetchAllRecords());
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className={styles.container}>
+      <TopBar setFetchedTasks={setFetchedTasks}/>
+      <Tasks fetchedTasks={fetchedTasks} setFetchedTasks={setFetchedTasks}/>
+      <CountTable tasks={fetchedTasks}/>
+    </main>
   );
 }
 
